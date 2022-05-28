@@ -24,4 +24,25 @@ class MarcasController extends BaseController
             var_dump($th);
         }
     }
+    public function croppie(){
+        try {
+            $image = $_POST['image'];
+            
+            $img_array1 = explode(";",$image);
+            $img_array2 = explode(",",$img_array1[1]);
+
+            $image = base64_decode($img_array2[1]);
+
+            $image_name = time().'.png';
+
+            $path =  $_SERVER['DOCUMENT_ROOT'].'/back-tecnomedica/assets/upload/'.$image_name;
+
+            file_put_contents($path, $image);
+            echo '
+                <img src="'.base_url('/assets/upload').'/'.$image_name.'">
+            ';
+        } catch (\Throwable $th) {
+            var_dump($th);
+        }
+    }
 }
