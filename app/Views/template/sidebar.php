@@ -33,6 +33,7 @@
                                 <li><a href="<?=base_url()?>/usuarios"><i class="fas fa-user-shield"></i> Usuarios </a>
                                 <li><a href="<?=base_url()?>/categorias"><i class="fas fa-folder-plus"></i> Categorias </a>
                                 <li><a href="<?=base_url()?>/marcas"><i class="fas fa-folder-plus"></i> Marcas </a>
+                                <li><a href="<?=base_url()?>/contactos"><i class="fas fa-address-card"></i> Detalle Contacto </a>
                                 <!-- <li><a href="<?=base_url()?>productos"><i class="glyphicon glyphicon-tag"></i> Productos </a>
 
                                 <li><a href="<?=base_url()?>presupuesto"><i class="fas fa-money"></i> Presupuesto </a>

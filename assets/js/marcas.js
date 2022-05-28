@@ -54,7 +54,7 @@ $(document).ready(function() {
                     image = image.replace(/"/g, '')
                     $('.btn-upload-image').attr('hidden', true)
                     $('.btn-save-marcas').removeAttr('hidden');
-                    $('#input_path_img').val(path)
+                    $('#input_path_img').val(image)
                     $('.img-selection-upload').attr('src', image)
                         /* $(".container-image").html(rsp); */
                     swal.close();
@@ -67,7 +67,6 @@ $(document).ready(function() {
             img = $('#input_path_img').val()
 
         img = img.replace(/"/g, '')
-        alert(img)
         if (marca.length == 0) {
             alertError('Al parecer algunos campos estan vacios')
         } else if (img.length == 0) {

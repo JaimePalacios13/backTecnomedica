@@ -47,6 +47,7 @@
 <script src="<?=base_url()?>/assets/js/mask.js"></script>
 <script src="<?=base_url()?>/assets/js/marcas.js"></script>
 <script src="<?=base_url()?>/assets/js/croppie.js"></script>
+<script src="<?=base_url()?>/assets/js/contacto.js"></script>
 </body>
 
 </html>

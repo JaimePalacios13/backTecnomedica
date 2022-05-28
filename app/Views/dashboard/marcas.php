@@ -45,7 +45,7 @@
                                             <tr>
                                                 <td>'.$i.'</td>
                                                 <td>'.$value['marca'].'</td>
-                                                <td><img src="'.base_url().'/'.$value['fotomarca'].'"></td>
+                                                <td><img src="'.$value['fotomarca'].'"></td>
                                                 <td>'.$estado.'</td>
                                             </tr>
                                             ';

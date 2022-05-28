@@ -49,6 +49,11 @@ $routes->post('nueva-categoria', 'CategoriasController::new');
 $routes->get('marcas', 'MarcasController::index');
 $routes->post('recortar-img', 'MarcasController::croppie');
 $routes->post('save-marca', 'MarcasController::savemarca');
+
+/* DETALLES DE CONTACTO */
+
+$routes->get('contactos', 'ContactosController::index');
+$routes->post('update-contacto', 'ContactosController::update');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
