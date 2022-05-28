@@ -48,6 +48,7 @@ $routes->post('nueva-categoria', 'CategoriasController::new');
 /* MARCAS */
 $routes->get('marcas', 'MarcasController::index');
 $routes->post('recortar-img', 'MarcasController::croppie');
+$routes->post('save-marca', 'MarcasController::savemarca');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

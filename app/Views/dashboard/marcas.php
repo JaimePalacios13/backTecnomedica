@@ -74,7 +74,8 @@
                                         </div>
                                     </div>
                                     <div class="col-12 container-image">
-
+                                        <img src="" class="img-selection-upload" alt="">
+                                        <input type="text" hidden value="" id="input_path_img">
                                     </div>
                                 </div>
                             </div>
@@ -88,6 +89,7 @@
                         <div class="row">
                             <div class="col-sm">
                                 <button type="button" class="btn btn-btn btn-block btn-warning btn-upload-image">Recortar imagen</button>
+                                <button type="button" class="btn btn-btn btn-block btn-primary btn-save-marcas">Guardad</button>
                             </div>
                         </div>
                     </div>

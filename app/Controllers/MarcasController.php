@@ -38,11 +38,30 @@ class MarcasController extends BaseController
             $path =  $_SERVER['DOCUMENT_ROOT'].'/back-tecnomedica/assets/upload/'.$image_name;
 
             file_put_contents($path, $image);
-            echo '
-                <img src="'.base_url('/assets/upload').'/'.$image_name.'">
-            ';
+            $img = '/assets/upload/'.$image_name;
+            echo json_encode($img);
         } catch (\Throwable $th) {
             var_dump($th);
+        }
+    }
+    public function savemarca(){
+        try {
+            $MarcasModel = new MarcasModel();
+            $marca = $_POST['marca'];
+            $img = $_POST['img'];
+
+            $data= [
+                'marca' => strtoupper($marca),
+                'fotomarca' => $img
+            ];
+
+            if ($MarcasModel->insert($data)) {
+                echo json_encode('success');
+            }else{
+                echo json_encode('error');
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
         }
     }
 }
