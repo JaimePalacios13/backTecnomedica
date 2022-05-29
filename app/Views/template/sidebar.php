@@ -1,11 +1,11 @@
 <?php
-    session_start();
+session_start();
 ?>
 
 <body class="nav-md">
     <div class="container body">
         <div class="main_container">
-            <div class="col-md-3 left_col">
+            <div class="col-md-3 left_col" style="position: fixed;">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
                         <a href="index.html" class="site_title"><span>Dashboard</span></a>
@@ -16,7 +16,7 @@
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
                         <div class="profile_info">
-                            <h2><?=strtoupper($_SESSION['nombre'])?></h2>
+                            <h2><?= strtoupper($_SESSION['nombre']) ?></h2>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
@@ -30,13 +30,22 @@
                             <ul class="nav side-menu">
                                 <li><a href="dashboard"><i class="fa fa-home"></i> Home </a>
                                 </li>
-                                <li><a href="<?=base_url()?>/usuarios"><i class="fas fa-user-shield"></i> Usuarios </a>
-                                <li><a href="<?=base_url()?>/categorias"><i class="fas fa-folder-plus"></i> Categorias </a>
-                                <li><a href="<?=base_url()?>/marcas"><i class="fas fa-folder-plus"></i> Marcas </a>
-                                <li><a href="<?=base_url()?>/contactos"><i class="fas fa-address-card"></i> Detalle Contacto </a>
-                                <!-- <li><a href="<?=base_url()?>productos"><i class="glyphicon glyphicon-tag"></i> Productos </a>
+                                <li><a href="<?= base_url() ?>/usuarios"><i class="fas fa-user-shield"></i> Usuarios </a>
+                                <li><a href="<?= base_url() ?>/categorias"><i class="fas fa-folder-plus"></i> Categorias </a>
+                                <li><a href="<?= base_url() ?>/marcas"><i class="fas fa-folder-plus"></i> Marcas </a>
+                                <li><a href="<?= base_url() ?>/contactos"><i class="fas fa-address-card"></i> Detalle Contacto </a>
+                                <li><a><i class="fas fa-gear"></i>Configuración <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="<?= base_url() ?>/historia-edit">Historia / frase</a></li>
+                                        <li><a href="<?= base_url() ?>/carousel">Carousel</a></li>
+                                        <li><a href="<?= base_url() ?>/mision-vision">Misión y Visión</a></li>
+                                        <li><a href="<?= base_url() ?>/politica-compromiso">Politica y compromiso</a></li>
+                                    </ul>
+                                </li>
 
-                                <li><a href="<?=base_url()?>presupuesto"><i class="fas fa-money"></i> Presupuesto </a>
+                                <!-- <li><a href="<?= base_url() ?>productos"><i class="glyphicon glyphicon-tag"></i> Productos </a>
+
+                                <li><a href="<?= base_url() ?>presupuesto"><i class="fas fa-money"></i> Presupuesto </a>
 
                                 <li><a><i class="fa fa-edit"></i> Item 5 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
@@ -89,7 +98,7 @@
                         <ul class=" navbar-right">
                             <li class="nav-item dropdown open" style="padding-left: 15px;">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png" alt=""><?=$_SESSION['nombre']?>
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png" alt=""><?= $_SESSION['nombre'] ?>
                                 </a>
                                 <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="javascript:;"> Perfil</a>
