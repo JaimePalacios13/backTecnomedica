@@ -63,7 +63,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-6 " id="container-img-historia">
-                                <img src="<?= base_url() ?>/assets/upload/historia/historia.jpg" alt="" class="img-fluid">
+                                <img src="<?= $data[0]["img_historia"] ?>" alt="" class="img-fluid">
                             </div>
                             <div class="col-sm-6">
                                 <div id="image_demo_pic"></div>

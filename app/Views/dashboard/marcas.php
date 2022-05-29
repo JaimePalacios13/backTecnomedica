@@ -89,7 +89,7 @@
                         <div class="row">
                             <div class="col-sm">
                                 <button type="button" class="btn btn-btn btn-block btn-warning btn-upload-image">Recortar imagen</button>
-                                <button type="button" class="btn btn-btn btn-block btn-primary btn-save-marcas">Guardad</button>
+                                <button type="button" class="btn btn-btn btn-block btn-primary btn-save-marcas">Guardar</button>
                             </div>
                         </div>
                     </div>

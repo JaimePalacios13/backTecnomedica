@@ -65,11 +65,17 @@ $routes->post('update/mision-vision', 'ConfiguracionController::update_mision_vi
 $routes->get('politica-compromiso', 'ConfiguracionController::politica_compromiso_edit');
 $routes->post('update/politica-compromiso', 'ConfiguracionController::update_politica_compromiso');
 
-$routes->get('historia-edit', 'ConfiguracionController::historia_edit');
+$routes->get('historia', 'ConfiguracionController::historia_edit');
 $routes->post('update/historia-frase', 'ConfiguracionController::update_historia_frase');
 
 $routes->post('upload_pic/historia', 'ConfiguracionController::upload_pic_historia');
 $routes->post('update/lemas-sublemas', 'ConfiguracionController::update_lemas_sublemas');
+
+/* Productos */
+$routes->get('productos', 'ProductosController::index');
+$routes->post('insert/producto', 'ProductosController::insert');
+$routes->post('recortar-img/producto', 'ProductosController::croppie');
+
 
 /*
  * --------------------------------------------------------------------

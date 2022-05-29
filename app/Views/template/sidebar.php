@@ -5,7 +5,7 @@ session_start();
 <body class="nav-md">
     <div class="container body">
         <div class="main_container">
-            <div class="col-md-3 left_col" style="position: fixed;">
+            <div class="col-md-3 left_col" >
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
                         <a href="index.html" class="site_title"><span>Dashboard</span></a>
@@ -33,10 +33,11 @@ session_start();
                                 <li><a href="<?= base_url() ?>/usuarios"><i class="fas fa-user-shield"></i> Usuarios </a>
                                 <li><a href="<?= base_url() ?>/categorias"><i class="fas fa-folder-plus"></i> Categorias </a>
                                 <li><a href="<?= base_url() ?>/marcas"><i class="fas fa-folder-plus"></i> Marcas </a>
+                                <li><a href="<?= base_url() ?>/productos"><i class="fas fa-tags"></i> Productos </a>
                                 <li><a href="<?= base_url() ?>/contactos"><i class="fas fa-address-card"></i> Detalle Contacto </a>
                                 <li><a><i class="fas fa-gear"></i>Configuración <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="<?= base_url() ?>/historia-edit">Historia / frase</a></li>
+                                        <li><a href="<?= base_url() ?>/historia">Historia / frase</a></li>
                                         <li><a href="<?= base_url() ?>/carousel">Carousel</a></li>
                                         <li><a href="<?= base_url() ?>/mision-vision">Misión y Visión</a></li>
                                         <li><a href="<?= base_url() ?>/politica-compromiso">Politica y compromiso</a></li>
