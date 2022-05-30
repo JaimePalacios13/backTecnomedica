@@ -102,7 +102,18 @@ $(".btn-upload-image").click(function (event) {
           $("#container-img-historia img").remove();
           $("#container-img-historia").append(
             `<img src="${baseURL}/assets/upload/historia/historia.jpg" alt="" class="img-fluid">`
-          );
+          );  
+
+          $("#container-img-historia img").remove();
+          $("#container-img-historia").append(
+            `<img src="${baseURL}/assets/upload/historia/historia.jpg" alt="" class="img-fluid">`
+          );  
+
+          window.location.reload();
+
+
+          setTimeout(() => {
+          }, 2000);
 
           Swal.fire({
             icon: "success",
@@ -114,6 +125,7 @@ $(".btn-upload-image").click(function (event) {
             allowEscapeKey: false,
             allowOutsideClick: false,
           });
+          
 
           if (data == "true") {
             setTimeout(window.forceReload(), 2000);

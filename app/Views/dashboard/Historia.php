@@ -7,6 +7,10 @@
         padding: 20px !important;
         border: 1px solid #c1c1c1 !important;
     }
+
+    .cr-boundary{
+        height: 300px !important;
+    }
 </style>
 <div class="card">
 
@@ -62,8 +66,9 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-sm-6 " id="container-img-historia">
-                                <img src="<?= $data[0]["img_historia"] ?>" alt="" class="img-fluid">
+                                <img src="<?= base_url()?>/assets/upload/historia/historia.jpg" alt="" class="img-fluid">
                             </div>
                             <div class="col-sm-6">
                                 <div id="image_demo_pic"></div>

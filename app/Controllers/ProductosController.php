@@ -26,7 +26,7 @@ class ProductosController extends BaseController
             $session = session();
             if(isset($_SESSION['sesion_activa'])){
                 $data['productos'] = $this->ProductosModel
-                ->select("*, categoria.nombre as categoria, producto.nombre as producto, producto.fotografia as foto_producto")
+                ->select("*, producto.descripcion as producto_desc, categoria.nombre as categoria, producto.nombre as producto, producto.fotografia as foto_producto")
                 ->join("marca","marca.idmarca = producto.id_marca")
                 ->join("categoria","categoria.id_categoria = producto.id_categoria")
                 ->findAll();

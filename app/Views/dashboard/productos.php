@@ -56,7 +56,7 @@
                                                 <th><img class="img-fluid" src="<?=$value["foto_producto"] ?>" alt=""></th>
                                                 <th><?= $value["categoria"] ?></th>
                                                 <th><?=$value["marca"]?></th>
-                                                <th><?= $value["descripcion"] ?></th>
+                                                <th><?= $value["producto_desc"] ?></th>
                                             </tr>
                                         <?php $i++; }
                                         ?>
