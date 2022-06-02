@@ -68,15 +68,18 @@
                             </div>
 
                             <div class="col-sm-6 " id="container-img-historia">
-                                <img src="<?= base_url()?>/assets/upload/historia/historia.jpg" alt="" class="img-fluid">
+                            <img src="" alt="" class="img-fluid img-selection-upload_h">
                             </div>
                             <div class="col-sm-6">
-                                <div id="image_demo_pic"></div>
+                                <div id="image_demo_pic">
+                                </div>
                             </div>
+                            <input type="text" id="input_path_img_historia">
                         </div>
                         <div class="row">
                             <div class="col-sm">
-                                <button type="button" class="btn btn-btn btn-block btn-warning btn-upload-image">Recortar imagen y guardar</button>
+                                <button type="button" class="btn btn-btn btn-block btn-warning btn-upload-image">Recortar imagen</button>
+                                <button type="button" hidden class="btn btn-btn btn-block btn-primary btn-save-image">Guardar imagen</button>
                             </div>
                         </div>
                     </div>

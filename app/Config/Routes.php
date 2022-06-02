@@ -75,6 +75,8 @@ $routes->post('update/lemas-sublemas', 'ConfiguracionController::update_lemas_su
 $routes->get('productos', 'ProductosController::index');
 $routes->post('insert/producto', 'ProductosController::insert');
 $routes->post('recortar-img/producto', 'ProductosController::croppie');
+$routes->post('deleteProduct', 'ProductosController::deleteProduct');
+
 
 
 /*

@@ -85,11 +85,24 @@ class ProductosController extends BaseController
                 'fotografia' => $this->request->getPost('image')
             ];
 
-            echo json_encode($data);
+/*             echo json_encode($data); */
 
             if ($this->ProductosModel->insert($data)) {
                 echo json_encode('success');
             }else{
+                echo json_encode('error');
+            }
+        } catch (\Throwable $th) {
+            var_dump($th);
+        }
+    }
+
+    public function deleteProduct(){
+        try {
+            $id = $this->request->getPost('idproducto');
+            if ($this->ProductosModel->where('id_producto', $id)->delete()) {
+                echo json_encode('success');
+            }else {
                 echo json_encode('error');
             }
         } catch (\Throwable $th) {

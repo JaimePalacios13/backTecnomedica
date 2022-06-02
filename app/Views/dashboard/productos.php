@@ -42,7 +42,7 @@
                                             <th>Categoria</th>
                                             <th>Marca</th>
                                             <th>Descripción</th>
-                                            <!-- <th>Acciones</th> -->
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -57,6 +57,11 @@
                                                 <th><?= $value["categoria"] ?></th>
                                                 <th><?=$value["marca"]?></th>
                                                 <th><?= $value["producto_desc"] ?></th>
+                                                <th>
+                                                    <button type="button" onclick="deleteProduct('<?= $value['id_producto'] ?>')" class="btn btn-success">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </th>
                                             </tr>
                                         <?php $i++; }
                                         ?>

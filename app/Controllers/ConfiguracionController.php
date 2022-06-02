@@ -195,12 +195,13 @@ class ConfiguracionController extends BaseController
             $image_array_1 = explode(";", $data);
             $image_array_2 = explode(",", $image_array_1[1]);
             $img = base64_decode($image_array_2[1]);
-            $image_name = "historia.jpg";
+            $image_name = time().".jpg";
 
             $path =  $_SERVER['DOCUMENT_ROOT'] . '/back-tecnomedica/assets/upload/historia/' . $image_name;
 
             file_put_contents($path, $img);
-            echo json_encode("success");
+            $img = '/assets/upload/historia/'.$image_name;
+            echo json_encode($img);
         } catch (Exception $e) {
             echo $e;
         }
