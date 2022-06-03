@@ -44,8 +44,8 @@ document.querySelector("#btn-history").addEventListener("click", () => {
     });
 });
 
-var bwidth;
 
+var bwidth;
 $(window).resize(function() {
     cwidth = $(window).width();
 
@@ -57,17 +57,19 @@ $(window).resize(function() {
     }
 });
 
+
+
 var image_crop_pic = $("#image_demo_pic").croppie({
     enableExif: true,
     viewport: {
-        width: 263.56,
-        height: 248.49,
-        type: "square", //circle
+        width: 200,
+        height: 200,
+        type: 'square' //circle
     },
     boundary: {
-        width: bwidth,
-        height: 700,
-    },
+        width: 300,
+        height: 300
+    }
 });
 
 $("#upload_image_pic").on("change", function() {
@@ -82,9 +84,9 @@ $("#upload_image_pic").on("change", function() {
             });
     };
     reader.readAsDataURL(this.files[0]);
-    $('.btn-save-image').attr('hidden', true)
-    $('.btn-upload-image').removeAttr('hidden');
+    $("#uploadimageModal_pic").modal("show");
 });
+
 
 $(".btn-upload-image").click(function(event) {
     image_crop_pic
@@ -104,7 +106,6 @@ $(".btn-upload-image").click(function(event) {
                     var path = rsp.replace(/\\/g, '')
                     var image = baseURL + path
                     image = image.replace(/"/g, '')
-                    $('.btn-upload-image').attr('hidden', true)
                     $('.btn-save-image').removeAttr('hidden');
                     $('#input_path_img_historia').val(image)
                     $('.img-selection-upload_h').attr('src', image)
