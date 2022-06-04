@@ -191,17 +191,32 @@ class ConfiguracionController extends BaseController
 
         try {
 
-            $data = $_POST["image_pic"];
+            $data = $_POST["image_pic"]; // capturar imagen en base 64
+
+            /* limpiar imagen base64 */
             $image_array_1 = explode(";", $data);
             $image_array_2 = explode(",", $image_array_1[1]);
-            $img = base64_decode($image_array_2[1]);
-            $image_name = time().".jpg";
 
+            $img = base64_decode($image_array_2[1]); // decodificar imagen
+            $image_name = "historia".time().".jpg"; // asignar nombre a la imagen 
+            
+            /* asignar ruta y nombre de imagen a subir */
             $path =  $_SERVER['DOCUMENT_ROOT'] . '/back-tecnomedica/assets/upload/historia/' . $image_name;
-
+            //chmod($_SERVER['DOCUMENT_ROOT'] . '/back-tecnomedica/assets/upload/historia', 777);
+            /*  subir imagen */
             file_put_contents($path, $img);
-            $img = '/assets/upload/historia/'.$image_name;
-            echo json_encode($img);
+
+            $img = base_url().'/assets/upload/historia/'.$image_name; //ruta a almacenar en la bd
+            $data = array(
+                "img_historia" => $img,
+            );
+
+            /* actualizar : ya que es solo un registro siempre se busca el id 1 */
+            if ($this->InicioModel->update(1, $data)) {
+                echo "success";
+            }
+
+
         } catch (Exception $e) {
             echo $e;
         }

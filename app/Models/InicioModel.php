@@ -13,6 +13,7 @@ class InicioModel extends Model{
         "compromiso",
         "historia",
         "frase",
+        "img_historia"
     ];
 
 }

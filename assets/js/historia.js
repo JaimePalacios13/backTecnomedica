@@ -7,139 +7,101 @@ const textareaElem2 = document.querySelector("#frase");
 counterElem[0].innerHTML = `${textareaElem.value.length}/${maxLengthCounter}`;
 counterElem[1].innerHTML = `${textareaElem2.value.length}/${150}`;
 
-textareaElem.addEventListener("input", function(val) {
-    let countInput = textareaElem.value.length;
-    counterElem[0].innerHTML = `${countInput}/${maxLengthCounter}`;
+textareaElem.addEventListener("input", function (val) {
+  let countInput = textareaElem.value.length;
+  counterElem[0].innerHTML = `${countInput}/${maxLengthCounter}`;
 });
 
-textareaElem2.addEventListener("input", function(val) {
-    let countInput = textareaElem2.value.length;
-    counterElem[1].innerHTML = `${countInput}/${150}`;
+textareaElem2.addEventListener("input", function (val) {
+  let countInput = textareaElem2.value.length;
+  counterElem[1].innerHTML = `${countInput}/${150}`;
 });
 
 document.querySelector("#btn-history").addEventListener("click", () => {
-    $.ajax({
-        type: "post",
-        url: baseURL + "update/historia-frase",
-        data: {
-            historia: $("#historia").val(),
-            frase: $("#frase").val(),
-        },
-        dataType: "json",
-        success: function(response) {
-            Swal.fire({
-                icon: "success",
-                title: "Registro actualizado",
-                text: "Los datos se han actualizado correctamente",
-                showDenyButton: false,
-                showCancelButton: false,
-                confirmButtonText: "OK",
-                allowEscapeKey: false,
-                allowOutsideClick: false,
-            });
-        },
-        error: function(data) {
-            console.log("error");
-            console.log(data);
-        },
-    });
-});
-
-
-var bwidth;
-$(window).resize(function() {
-    cwidth = $(window).width();
-
-    /* console.log(cwidth); */
-    if (cwidth <= 480 && cwidth >= 320) {
-        bwidth = cwidth - 40;
-    } else {
-        bwidth = 185;
-    }
-});
-
-
-
-var image_crop_pic = $("#image_demo_pic").croppie({
-    enableExif: true,
-    viewport: {
-        width: 200,
-        height: 200,
-        type: 'square' //circle
+  $.ajax({
+    type: "post",
+    url: baseURL + "update/historia-frase",
+    data: {
+      historia: $("#historia").val(),
+      frase: $("#frase").val(),
     },
-    boundary: {
-        width: 300,
-        height: 300
-    }
+    dataType: "json",
+    success: function (response) {
+      Swal.fire({
+        icon: "success",
+        title: "Registro actualizado",
+        text: "Los datos se han actualizado correctamente",
+        showDenyButton: false,
+        showCancelButton: false,
+        confirmButtonText: "OK",
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+      });
+    },
+    error: function (data) {
+      console.log("error");
+      console.log(data);
+    },
+  });
 });
 
-$("#upload_image_pic").on("change", function() {
+/* funcionalidad :: imagen  */
+
+$("#upload_image_history").change(function () {
+  if (this.files && this.files[0]) {
+    // validación para saber si el input tiene o no una imagen cargada
     var reader = new FileReader();
-    reader.onload = function(event) {
-        image_crop_pic
-            .croppie("bind", {
-                url: event.target.result,
-            })
-            .then(function() {
-                /* console.log('jQuery bind complete'); */
-            });
+    reader.onload = function (e) {
+      $(".img-selection-upload_h").attr("src", e.target.result); //asignar imagen en base64 para la vista previa
     };
     reader.readAsDataURL(this.files[0]);
-    $("#uploadimageModal_pic").modal("show");
+    $(".btn-upload-image-history").removeAttr("hidden"); //mostrar boton para subir imagen
+  } else {
+    $(".btn-upload-image-history").attr("hidden");
+  }
 });
 
+$(".btn-upload-image-history").click(function (event) {
+  image_pic = $(".img-selection-upload_h").attr("src");
+  $.ajax({
+    url: baseURL + "upload_pic/historia",
+    type: "POST",
+    data: {
+      image_pic,
+    },
+    dataType: "text",
+    success: function (rsp) {
+      var path = rsp.replace(/\\/g, "");
+      var image = baseURL + path;
+      image = image.replace(/"/g, "");
+      /*             $('.btn-upload-image-history').removeAttr('hidden');
+            $('#input_path_img_historia').val(image)
+ */ $(".img-selection-upload_h").attr("src", image_pic);
 
-$(".btn-upload-image").click(function(event) {
-    image_crop_pic
-        .croppie("result", {
-            type: "canvas",
-            size: "viewport",
+      if (rsp == "success") {
+        Swal.fire({
+          icon: "success",
+          title: "Imagen actualizada",
+          text: "La imagen ha sido actualizada exitosamente",
+          showDenyButton: false,
+          showCancelButton: false,
+          confirmButtonText: "OK",
+          allowEscapeKey: false,
+          allowOutsideClick: false,
         })
-        .then(function(response) {
-            $.ajax({
-                url: baseURL + "upload_pic/historia",
-                type: "POST",
-                data: {
-                    image_pic: response,
-                },
-
-                success: function(rsp) {
-                    var path = rsp.replace(/\\/g, '')
-                    var image = baseURL + path
-                    image = image.replace(/"/g, '')
-                    $('.btn-save-image').removeAttr('hidden');
-                    $('#input_path_img_historia').val(image)
-                    $('.img-selection-upload_h').attr('src', image)
-
-                    /* window.location.reload();
-
-
-                    setTimeout(() => {
-                    }, 2000);
-
-                    Swal.fire({
-                      icon: "success",
-                      title: "Registro actualizado",
-                      text: "Imagen subida correctamente",
-                      showDenyButton: false,
-                      showCancelButton: false,
-                      confirmButtonText: "OK",
-                      allowEscapeKey: false,
-                      allowOutsideClick: false,
-                    });
-          
-
-                    if (data == "true") {
-                      setTimeout(window.forceReload(), 2000);
-                    } */
-                },
-                error: function(data) {
-                    console.log(data);
-                },
-            }).done(function(data) {
-                console.log(data);
-            });
-        });
+        
+      } else {
+        alertError(
+          "Ocurrio un error al momento de crea una nueva marca. Intente de nuevo"
+        );
+      }
+    },
+    error: function (data) {
+      console.log(data);
+    },
+  }).done(function (data) {
+    console.log(data);
+  });
 });
 
 /* Final  editar pic*/
