@@ -12,7 +12,10 @@ class CarouselModel extends Model{
         'lema2', 
         'sublema2', 
         'lema3', 
-        'sublema3', 
+        'sublema3',
+        'carousel1',
+        'carousel2',
+        'carousel3'
     ];
 
 }

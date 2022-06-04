@@ -15,6 +15,7 @@ class ConfiguracionController extends BaseController
     public function __construct()
     {
         $this->InicioModel = new InicioModel();
+        $this->CarouselModel = new CarouselModel();
     }
 
     public function carousel_edit()
@@ -198,25 +199,59 @@ class ConfiguracionController extends BaseController
             $image_array_2 = explode(",", $image_array_1[1]);
 
             $img = base64_decode($image_array_2[1]); // decodificar imagen
-            $image_name = "historia".time().".jpg"; // asignar nombre a la imagen 
-            
-            /* asignar ruta y nombre de imagen a subir */
-            $path =  $_SERVER['DOCUMENT_ROOT'] . '/back-tecnomedica/assets/upload/historia/' . $image_name;
-            //chmod($_SERVER['DOCUMENT_ROOT'] . '/back-tecnomedica/assets/upload/historia', 777);
-            /*  subir imagen */
-            file_put_contents($path, $img);
+            if ($_POST["tipoimagen"] == 'historia') {/* este if actualiza la imagen de historia */
+                $image_name = "historia".time().".jpg"; 
+                $path =  $_SERVER['DOCUMENT_ROOT'] . '/back-tecnomedica/assets/upload/historia/' . $image_name;
 
-            $img = base_url().'/assets/upload/historia/'.$image_name; //ruta a almacenar en la bd
-            $data = array(
-                "img_historia" => $img,
-            );
+                file_put_contents($path, $img); // sube la imagen
 
-            /* actualizar : ya que es solo un registro siempre se busca el id 1 */
-            if ($this->InicioModel->update(1, $data)) {
-                echo "success";
+                $img = base_url().'/assets/upload/historia/'.$image_name; //ruta a almacenar en la bd
+                $data = array(
+                    "img_historia" => $img,
+                );
+                if ($this->InicioModel->update(1, $data)) {
+                    echo "success";
+                }
+            }elseif ($_POST["tipoimagen"] == 'c1') {
+                $image_name = "carousel1".time().".jpg"; 
+                $path =  $_SERVER['DOCUMENT_ROOT'] . '/back-tecnomedica/assets/upload/carousel/' . $image_name;
+
+                file_put_contents($path, $img); // sube la imagen
+
+                $img = base_url().'/assets/upload/carousel/'.$image_name; //ruta a almacenar en la bd
+                $data = array(
+                    "carousel1" => $img,
+                );
+                if ($this->CarouselModel->update(1, $data)) {
+                    echo "success";
+                }
+            }elseif ($_POST["tipoimagen"] == 'c2') {
+                $image_name = "carousel2".time().".jpg"; 
+                $path =  $_SERVER['DOCUMENT_ROOT'] . '/back-tecnomedica/assets/upload/carousel/' . $image_name;
+
+                file_put_contents($path, $img); // sube la imagen
+
+                $img = base_url().'/assets/upload/carousel/'.$image_name; //ruta a almacenar en la bd
+                $data = array(
+                    "carousel2" => $img,
+                );
+                if ($this->CarouselModel->update(1, $data)) {
+                    echo "success";
+                }
+            }elseif ($_POST["tipoimagen"] == 'c3') {
+                $image_name = "carousel3".time().".jpg"; 
+                $path =  $_SERVER['DOCUMENT_ROOT'] . '/back-tecnomedica/assets/upload/carousel/' . $image_name;
+
+                file_put_contents($path, $img); // sube la imagen
+
+                $img = base_url().'/assets/upload/carousel/'.$image_name; //ruta a almacenar en la bd
+                $data = array(
+                    "carousel3" => $img,
+                );
+                if ($this->CarouselModel->update(1, $data)) {
+                    echo "success";
+                }
             }
-
-
         } catch (Exception $e) {
             echo $e;
         }
