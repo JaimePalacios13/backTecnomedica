@@ -1,3 +1,4 @@
+/* comit sunido */
 const counterElem = document.querySelectorAll(".counter");
 const maxLengthCounter = 800;
 const textareaElem = document.querySelector("#historia");
